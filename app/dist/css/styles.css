@@ -1,0 +1,47 @@
+html {
+    height: 100%
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+.holder  {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#geocodeBtn {
+    padding: 10px;
+    cursor: pointer;
+    width: 133.3px;
+    background-color: #333;
+    color: #fff;
+    letter-spacing: 1px;
+    border: none;
+}
+
+#heatmapBtn {
+    display: none;
+    margin-top: 30px;
+    text-decoration: none;
+    padding: 10px;
+    font-size: 13.3333px;
+    background-color: #333;
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+#map-canvas {
+    height: 100%
+}
+
+.show-btn {
+    display: block !important;
+}
