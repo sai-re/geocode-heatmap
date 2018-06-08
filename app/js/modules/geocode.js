@@ -120,6 +120,24 @@ const Geocode = {
             }
             
             sendRequest(url, "GET").then(handlePostcode).catch(err => console.log(err));
+
+            // let textfield = document.getElementById("postcode-field"),
+            // postcodes = textfield.value.toUpperCase(),
+            // n,
+            // c = 0;
+
+            // postcodes = postcodes.split('\n');
+
+            // const postcodeLength = postcodes.length;
+
+            // for (n = 0; n < postcodeLength; n++) {
+            //     c++
+            //     geocodeAddress(postcodes[n], postcodeLength);
+            // }
+
+            // if (c === postcodeLength) {
+            //     heatmapBtn.classList.add("show-btn");
+            // }
         }
 
         ///////
@@ -130,7 +148,7 @@ const Geocode = {
                 const existingPostcodes = JSON.parse(response);
                 const array = [];
                 let i;
-                    
+                
                 for (i in existingPostcodes) {
                     array.push(existingPostcodes[i].postcode);
                 }

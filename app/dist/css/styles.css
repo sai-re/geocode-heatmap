@@ -9,6 +9,14 @@ body {
     font-family: sans-serif;
 }
 
+h1 {
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-top: 60px;
+    color: #333;
+}
+
 .holder  {
     display: flex;
     height: 100%;
@@ -17,10 +25,19 @@ body {
     flex-direction: column;
 }
 
+#postcode-field {
+    resize: none;
+    width: 250px;
+    height: 250px;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
 #geocodeBtn {
+    margin-top: 15px;
     padding: 10px;
     cursor: pointer;
-    width: 133.3px;
+    width: 250px;
     background-color: #333;
     color: #fff;
     letter-spacing: 1px;
@@ -29,9 +46,11 @@ body {
 
 #heatmapBtn {
     display: none;
+    width: 250px;
+    text-align: center;
     margin-top: 30px;
     text-decoration: none;
-    padding: 10px;
+    padding: 10px 0;
     font-size: 13.3333px;
     background-color: #333;
     color: #fff;
