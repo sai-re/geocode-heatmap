@@ -10,13 +10,27 @@
 <body>
     <div class="holder">
         <h1>Geocode UK Postcode on to Heatmap</h1>
-        <p>Enter each postcode on a new line</p>
+        <p id="infoMessage">Enter each postcode on a new line</p>
         <textarea name="postcodes" id="postcode-field"></textarea>
         <button type="button" id="geocodeBtn">GEOCODE</button>
         <a href="heatmap.html" id="heatmapBtn">VIEW HEATMAP</a>
     </div>
 
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxOOz8mt8nkOXwi2RiSUTgViK1hQbVLwU"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function (event) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "http://localhost/sai-xampp/heatmap-es6/app/assets/php/reset.php", true);
+            xhr.onload = function() {
+                if (xhr.status >= 200 && xhr.status < 400) {
+                    console.log("working");
+                }
+            };
+            xhr.send(null);
+        });
+    </script>
+
     <script src="js/bundle.js"></script>
 </body>
 </html>
