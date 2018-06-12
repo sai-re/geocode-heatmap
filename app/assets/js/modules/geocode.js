@@ -22,7 +22,7 @@ const Geocode = {
         let barWidth = i.loadingBar.offsetWidth;
         let heatmapBtn = document.getElementById("heatmapBtn");
 
-        ///////
+        //////AJAX PROMISE////////
         const sendRequest = (url, requestType, data) => {
             return new Promise((resolve, reject) => {
                 const request = new XMLHttpRequest();
@@ -42,7 +42,7 @@ const Geocode = {
             });
         };
 
-        ///////
+        ///////FUNCTION TO SEND LAT & LONG TO DATABASE///////
         const sendLatLng = (postcode, lat, lng, length) => {
             const url = "http://localhost/sai-xampp/heatmap-es6/app/assets/php/data.php";
 
@@ -53,19 +53,23 @@ const Geocode = {
 
             count++;
             barWidth += 100 / length;
-            i.loadingBar.style.width = barWidth + "%";
-
+            
             console.log(count);
+            
+            if(count <= length) {
+                i.loadingBar.style.width = barWidth + "%";
+                sendRequest(url, 'POST', data);
+            }
 
             if(count === length) {
                 console.log("geocode complete");
+                i.infoMessage.textContent = "Geocode complete"
                 heatmapBtn.classList.add("show-btn");
             }
 
-            sendRequest(url, 'POST', data);
         };
 
-        ///////
+        ///////GEOCODES POSTCODES///////
         const geocodeAddress = (postcode, length) => {
             const geocoder = new google.maps.Geocoder();
             let lat,
@@ -155,6 +159,7 @@ const Geocode = {
 
         // checkExistingPoscodes();
 
+        ///////GETS POSTCODES FROM TEXTFIELD AND GEOCODES/////////
         const getPostcodesfromInput = () => {
             const textValue = i.textField.value;
 

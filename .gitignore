@@ -1,2 +1,3 @@
 node_modules
-app/assets/php/reset.php
+app/assets/php/info.php
+.vscode
