@@ -4,7 +4,9 @@ const Geocode = {
     variables: {
         geocodeBtn: document.getElementById("geocodeBtn"),
         textField: document.getElementById("postcode-field"),
-        infoMessage: document.getElementById("infoMessage")
+        infoMessage: document.getElementById("infoMessage"),
+        progressBar: document.querySelector(".meter"),
+        loadingBar: document.querySelector(".meter > span")
     },
 
     init: function() {
@@ -17,6 +19,7 @@ const Geocode = {
 
     geocodePostcodes: () => {
         let count = 0;
+        let barWidth = i.loadingBar.offsetWidth;
         let heatmapBtn = document.getElementById("heatmapBtn");
 
         ///////
@@ -49,6 +52,9 @@ const Geocode = {
             data.append('lng', lng);
 
             count++;
+            barWidth += 100 / length;
+            i.loadingBar.style.width = barWidth + "%";
+
             console.log(count);
 
             if(count === length) {
@@ -118,9 +124,9 @@ const Geocode = {
         //             }
         //         }
                 
-        //         if (c === postcodeLength) {
-        //             heatmapBtn.classList.add("show-btn");
-        //         }
+        //         // if (c === postcodeLength) {
+        //         //     heatmapBtn.classList.add("show-btn");
+        //         // }
         //     }
             
         //     sendRequest(url, "GET").then(handlePostcode).catch(err => console.log(err));
@@ -150,25 +156,20 @@ const Geocode = {
         // checkExistingPoscodes();
 
         const getPostcodesfromInput = () => {
-
-            // let textField = document.getElementById("postcode-field");
             const textValue = i.textField.value;
 
             if (textValue === "") {
                 i.infoMessage.textContent = "please enter a postcode"
             } else {
+
+                i.progressBar.classList.add("show");
+
                 const postcodes = textValue.split("\n").sort();
                 const postcodeLength = postcodes.length;    
-                let n,
-                    c = 0;
+                let n;
     
                 for (n = 0; n < postcodeLength; n++) {
-                    c++
                     geocodeAddress(postcodes[n], postcodeLength);
-                }
-                
-                if (c === postcodeLength) {
-                    heatmapBtn.classList.add("show-btn");
                 }
             }
         }
